@@ -15,8 +15,8 @@ const connection = mongoose.connect(process.env.MONGO_URL);
 
 app.engine('handlebars', handlebars.engine({
     runtimeOptions:{
-        allowProtoPropertiesByDefault:true,
-        allowedProtoProperties:true
+        allowProtoPropertiesByDefault: true,
+        allowedProtoProperties: true
     },
     helpers:{
         formatDate: function (date){
@@ -27,14 +27,14 @@ app.engine('handlebars', handlebars.engine({
 
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(process.cwd(), 'src', 'css')));
-app.set('view', './src/views');
+app.set('views', './src/views');
 
 app.use(express.json());
 app.use(cookieParser());
 
 app.get('/', (req, res)=>{
     res.render('welcome');
-})
+});
 app.get('/menu', (req, res)=>{
     res.render('menu');
 });
